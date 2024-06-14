@@ -61,6 +61,7 @@ const CreateNewAccountComponent = ({ setIsLoginForm }) => {
           backgroundColor: "red",
         },
       });
+      setIsLoading(false);
     } else {
       console.log("form filleled");
       const response = await axios
@@ -107,6 +108,7 @@ const CreateNewAccountComponent = ({ setIsLoginForm }) => {
           });
         });
       setIsLoading(false);
+      setIsLoginForm(true);
     }
   };
   return (

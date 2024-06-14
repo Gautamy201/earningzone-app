@@ -71,7 +71,6 @@ const LoginComponent = ({ setIsLoginForm }) => {
         },
       });
     } else {
-      console.log(password.length);
       try {
         const { data } = await axios.get(
           "https://earningzone-api.onrender.com/user"
