@@ -24,6 +24,10 @@ import { useGlobalContext } from "./context";
 import AdminRouter from "./router/AdminRouter";
 import AdminDashbordPage from "./Pages/AdminDashbordPage";
 import AdminLoginPage from "./Pages/AdminLoginPage";
+import Bgmi from "./Pages/Bgmi";
+import Upcomming from "./bgmi/Upcomming";
+import Ongoing from "./bgmi/Ongoing";
+import Results from "./bgmi/Results";
 
 const App = () => {
   const { userDetail } = useGlobalContext();
@@ -59,6 +63,16 @@ const App = () => {
             { path: "play", Component: PlayPage },
             { path: "", Component: PlayPage },
             { path: "videos", Component: VideoPage },
+            {
+              path: "bgmi",
+              Component: Bgmi,
+              children: [
+                { path: "", Component: Upcomming },
+                { path: "upcomming", Component: Upcomming },
+                { path: "ongoing", Component: Ongoing },
+                { path: "results", Component: Results },
+              ],
+            },
 
             // for mobile screen
 

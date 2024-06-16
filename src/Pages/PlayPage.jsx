@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import {
   Box,
+  Button,
+  Circle,
   GridItem,
   HStack,
   Heading,
@@ -8,20 +10,30 @@ import {
   SimpleGrid,
   Stack,
   Text,
+  VStack,
+  keyframes,
 } from "@chakra-ui/react";
+import banner from "../baner.json";
 import NotifyMessageComponent from "../Components/NotifyMessageComponent";
+import games from "../../game.json";
+import ContestsMenu from "../Components/ContestsMenu";
+import { useNavigate } from "react-router-dom";
+export { keyframes } from "@emotion/react";
 const PlayPage = () => {
-  const color = ["red", "blue", "green", "yellow"];
-  const [count, setCount] = useState(0);
+  const navigate = useNavigate();
+  const bannerLength = banner.length;
+
+  const [bannerIndex, setBannerIndex] = useState(0);
+
   useEffect(() => {
-    setInterval(() => {
-      if (count === color.length - 1) {
-        setCount(0);
-      } else {
-        setCount(count + 1);
-      }
-    }, 3000);
-  }, []);
+    setTimeout(() => {
+      setBannerIndex((prevBannerIndex) =>
+        prevBannerIndex === bannerLength - 1 ? 0 : prevBannerIndex + 1
+      );
+    }, 2500);
+    return () => {};
+  }, [bannerIndex]);
+
   return (
     <Box
       padding={[
@@ -34,19 +46,25 @@ const PlayPage = () => {
       minH={"100vh"}
     >
       <NotifyMessageComponent />
-      <Box margin={"20px 0"} border={"1px solid green"}>
-        <HStack
+      <Box margin={"20px 0"} overflow={"hidden"} width={"100%"}>
+        <Box
           width={"100%"}
-          border={"1px solid gray"}
-          justifyContent={"center"}
+          whiteSpace={"nowrap"}
+          transition={"ease 1500ms"}
+          style={{ transform: `translate3d(${-bannerIndex * 100}%, 0, 0)` }}
         >
-          <Box
-            className="bar"
-            w={"100%"}
-            h={["200px", "210px", "225px", "250px"]}
-            bg={color[count]}
-          ></Box>
-        </HStack>
+          {banner.map((banImg, index) => (
+            <Box
+              h={["10rem", "10rem", "20rem"]}
+              w={"100%"}
+              key={index}
+              display={"inline-block"}
+              bgImage={`url(assets/${banImg.banner})`}
+              bgSize={"cover"}
+              bgRepeat={"no-repeat"}
+            ></Box>
+          ))}
+        </Box>
       </Box>
       <Heading
         textTransform={"uppercase"}
@@ -57,35 +75,16 @@ const PlayPage = () => {
         Contests & Tornaments
       </Heading>
       <Box>
-        <SimpleGrid columns={[1, 2, 3, 3]} gap={"20px"}>
-          <GridItem
-            colSpan={1}
-            bg={"red.200"}
-            borderRadius={"10px"}
-            w={"100%"}
-            h={"200px"}
-          ></GridItem>
-          <GridItem
-            colSpan={1}
-            bg={"red.200"}
-            borderRadius={"10px"}
-            w={"100%"}
-            h={"200px"}
-          ></GridItem>
-          <GridItem
-            colSpan={1}
-            bg={"red.200"}
-            borderRadius={"10px"}
-            w={"100%"}
-            h={"200px"}
-          ></GridItem>
-          <GridItem
-            colSpan={1}
-            bg={"red.200"}
-            borderRadius={"10px"}
-            w={"100%"}
-            h={"200px"}
-          ></GridItem>
+        <SimpleGrid columns={[3]} rowGap={1} columnGap={[2, 2, 5]}>
+          {games.map((item) => (
+            <GridItem onClick={() => navigate("/user/bgmi")} key={item.id}>
+              <ContestsMenu
+                available={item.available}
+                gameImgSrc={item.gameImgSrc}
+                gameName={item.gameName}
+              />
+            </GridItem>
+          ))}
         </SimpleGrid>
       </Box>
       <Heading

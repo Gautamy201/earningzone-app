@@ -164,15 +164,16 @@ const DashBoardNav = () => {
                   width={"100%"}
                   textAlign={"center"}
                   padding={"10px 0"}
+                  onClick={onClose}
                 >
                   <Link
                     fontSize={"25px"}
                     fontWeight={600}
                     _hover={{ color: "#0FA4AF" }}
-                    onClick={() => navigate("/dashboard/play")}
+                    onClick={() => navigate("/user/play")}
                   >
                     <i className="ri-play-circle-line">
-                      <Text onClick={onClose} as={"span"} pl={"10px"}>
+                      <Text as={"span"} pl={"10px"}>
                         Play
                       </Text>
                     </i>
@@ -183,15 +184,16 @@ const DashBoardNav = () => {
                   width={"100%"}
                   textAlign={"center"}
                   padding={"10px 0"}
+                  onClose={onClose}
                 >
                   <Link
                     fontSize={"25px"}
                     fontWeight={600}
                     _hover={{ color: "#0FA4AF" }}
-                    onClick={() => navigate("/dashboard/videos")}
+                    onClick={() => navigate("/user/videos")}
                   >
                     <i className="ri-youtube-fill">
-                      <Text onClick={onClose} as={"span"} pl={"10px"}>
+                      <Text as={"span"} pl={"10px"}>
                         video
                       </Text>
                     </i>
@@ -226,7 +228,7 @@ const DashBoardNav = () => {
                     fontSize={"25px"}
                     fontWeight={600}
                     _hover={{ color: "#0FA4AF" }}
-                    onClick={() => navigate("/dashboard/")}
+                    onClick={() => navigate("/user/")}
                   >
                     <i className="ri-article-line">
                       <Text onClick={onClose} as={"span"} pl={"10px"}>
@@ -240,12 +242,13 @@ const DashBoardNav = () => {
                   width={"100%"}
                   textAlign={"center"}
                   padding={"10px 0"}
+                  onClose={onClose}
                 >
                   <Link
                     fontSize={"25px"}
                     fontWeight={600}
                     _hover={{ color: "#0FA4AF" }}
-                    onClick={() => navigate("/dashboard/me")}
+                    onClick={() => navigate("/user/me")}
                   >
                     <i className="ri-emotion-line">
                       <Text onClick={onClose} as={"span"} pl={"10px"}>

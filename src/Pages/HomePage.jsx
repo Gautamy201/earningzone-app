@@ -13,7 +13,7 @@ const HomePage = () => {
         heading={heading}
         info={info}
         btnText1={"Create New Account"}
-        btnText2={"Login"}
+        btnText2={"add"}
         btnFun1={() => navigate("/loginSignup")}
         btnFun2={() => navigate("/loginSignup")}
       />

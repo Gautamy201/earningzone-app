@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "gameName": "BGMI",
+    "gameImgSrc":"bgmi.jpg",
+    "available" :"yes"
+  },
+  {
+    "id": 1,
+    "gameName": "Free Fire",
+    "gameImgSrc":"freefire.jpg",
+    "available" :"no"
+  },
+  {
+    "id": 1,
+    "gameName": "COD Mobile",
+    "gameImgSrc":"cod.jpg",
+    "available" :"no"
+  }
+]
